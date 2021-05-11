@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Justin Randall / Playscale PTE LTD
+// Copyright (c) 2020 Justin Randall / Playscale PTE LTD
 // Released under the MIT license. See LICENSE included with this
 // source package for details.
 
@@ -96,6 +96,9 @@ namespace rapidjson
 	template <typename ValueType>
 	void read(const Document & doc, const std::string & key, ValueType & value)
 	{
+		if (!doc.IsObject())
+			return;
+
 		const auto & i = doc.FindMember(key.c_str());
 		if (i == doc.MemberEnd())
 			return;
@@ -115,6 +118,14 @@ namespace rapidjson
 		const Value & v = doc[key.c_str()];
 		read(v, value);
 		read(doc, args...);
+	}
+
+	template <typename ValueType>
+	void from_json(const std::string & jsonSource, ValueType & target)
+	{
+		Document doc;
+		doc.Parse(jsonSource.c_str());
+		read(doc, target);
 	}
 
 	template <typename... Args>

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Justin Randall / Playscale PTE LTD
+// Copyright (c) 2020 Justin Randall / Playscale PTE LTD
 // Released under the MIT license. See LICENSE included with this
 // source package for details.
 
@@ -25,6 +25,9 @@ namespace rapidjson
 	template <typename SequenceContainerType, typename ValueType>
 	void readSequence(const Value & ar, SequenceContainerType & values)
 	{
+		if (!ar.IsArray())
+			return;
+
 		for (SizeType i = 0; i < ar.Size(); ++i) {
 			ValueType target;
 			read(ar[i], target);
@@ -33,9 +36,23 @@ namespace rapidjson
 	}
 
 	template <typename SequenceContainerType, typename ValueType>
+	void readSequence(const Document & doc, SequenceContainerType & values)
+	{
+		if (!doc.IsArray())
+			return;
+		const Value & ar = doc.GetArray();
+
+		values.clear();
+		readSequence<SequenceContainerType, ValueType>(ar, values);
+	}
+
+	template <typename SequenceContainerType, typename ValueType>
 	void readSequence(const Document & doc, const std::string & key,
 	                  SequenceContainerType & values)
 	{
+		if (!doc.IsObject())
+			return;
+
 		const auto & i = doc.FindMember(key.c_str());
 		if (i == doc.MemberEnd())
 			return;

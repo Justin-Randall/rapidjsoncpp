@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Justin Randall / Playscale PTE LTD
+// Copyright (c) 2020 Justin Randall / Playscale PTE LTD
 // Released under the MIT license. See LICENSE included with this
 // source package for details.
 

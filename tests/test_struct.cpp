@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Justin Randall / Playscale PTE LTD
+// Copyright (c) 2020 Justin Randall / Playscale PTE LTD
 // Released under the MIT license. See LICENSE included with this
 // source package for details.
 
@@ -74,7 +74,7 @@ namespace rapidjson
 	}
 
 } // namespace rapidjson
-TEST(jsonpod, VerifySeralizationSimpleStruct)
+TEST(jsonobject, VerifySeralizationSimpleStruct)
 {
 	SimpleStruct alice("alice", 22);
 	SimpleStruct bob("bob", 24);
