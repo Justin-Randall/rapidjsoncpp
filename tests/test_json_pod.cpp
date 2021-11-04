@@ -31,20 +31,34 @@ void testPod(const std::string & podTypeName, const ValueType podValue)
 
 TEST(jsonpod, VerifySeralizationPlainOldDataTypes)
 {
-	testPod("unsigned char", unsigned char(222));
-	testPod("char", char(-100));
-	testPod("unsigned short", uint16_t(65000));
-	testPod("short", int16_t(-30000));
-	testPod("uint32_t", uint32_t(3000000000));
-	testPod("int32_t", int32_t(-2000000000));
-	testPod("uint64_t", uint64_t(100000000000));
-	testPod("int64_t", int64_t(-100000000000));
-	testPod("float", 3.1415f);
-	testPod("double", 1.000000000001);
-	testPod("bool", true);
+	static const unsigned char uc   = 222;
+	static const char          c    = -100;
+	static const uint16_t      ui16 = 65000;
+	static const int16_t       i16  = -30000;
+	static const uint32_t      ui32 = 3000000000;
+	static const int32_t       i32  = -2000000000;
+	static const uint64_t      ui64 = 100000000000;
+	static const int64_t       i64  = -100000000000;
+	static const float         f    = 3.1415f;
+	static const double        d    = 1.000000000001;
+	static bool                b    = true;
+	static const char * const  cc   = "this is a string literal";
+	static const std::string   ss   = "this is an stl string";
 
-	testPod("const char * const", "this is a string literal");
-	testPod("std::string", std::string("this is an stl string"));
+	testPod("unsigned char", cc);
+	testPod("char", c);
+	testPod("unsigned short", ui16);
+	testPod("short", i16);
+	testPod("uint32_t", ui32);
+	testPod("int32_t", i32);
+	testPod("uint64_t", ui64);
+	testPod("int64_t", i64);
+	testPod("float", f);
+	testPod("double", d);
+	testPod("bool", b);
+
+	testPod("const char * const", cc);
+	testPod("std::string", ss);
 }
 
 TEST(jsonpod, MultiplePodSerialization)
