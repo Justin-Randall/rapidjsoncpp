@@ -21,7 +21,9 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
     "test_json_map.cpp"
     "test_json_unordered_map.cpp"
     "test_json_set.cpp"
-    "test_struct.cpp")
+    "test_struct.cpp"
+    "test_json_pair.cpp"
+  )
 
   target_compile_features(jsoncpp_tests PRIVATE cxx_std_17)
 
