@@ -79,5 +79,6 @@
         "stack": "cpp",
         "stop_token": "cpp",
         "typeindex": "cpp"
-    }
+    },
+    "coverage-gutters.xmlname": "buld/coverage.xml"
 }

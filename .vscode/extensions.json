@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "ryanluker.vscode-coverage-gutters",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "matepek.vscode-catch2-test-adapter",
+        "xaver.clang-format",
+        "twxs.cmake",
+        "fredericbonnet.cmake-test-adapter",
+        "hbenl.vscode-test-explorer"
+    ]
+}
