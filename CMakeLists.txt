@@ -8,6 +8,7 @@ project(rapidjsoncpp VERSION 0.0.1 LANGUAGES CXX)
 include(CTest)
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+option(RAPIDJSON_BUILD_THIRDPARTY_GTEST OFF)
 set(RAPIDJSON_BUILD_TESTS false)
 
 include(FetchContent)
