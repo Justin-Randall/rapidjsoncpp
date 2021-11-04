@@ -7,7 +7,9 @@
 
 #include "rapidjson/document.h"
 #include "rapidjson/prettywriter.h"
+#include <sstream>
 #include <string>
+
 
 namespace rapidjson
 {
