@@ -11,8 +11,6 @@
 
 namespace rapidjson
 {
-	// TODO use container iterators and make this, set, deque and other code
-	// DRY!
 	template <typename WriterType, typename ValueType>
 	void write(WriterType & w, const std::vector<ValueType> & values)
 	{

@@ -10,7 +10,6 @@
 #include <sstream>
 #include <string>
 
-
 namespace rapidjson
 {
 	template <typename WriterType>
@@ -107,7 +106,7 @@ namespace rapidjson
 		// If you reach this line with an error about 'write' not taking 2
 		// arguments, there may be a write overload missing for the type you are
 		// attempting to serialize. It should be placed in the
-		// rapidjsonnamespace.
+		// rapidjson namespace.
 		write(w, value);
 	}
 

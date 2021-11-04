@@ -1,3 +1,5 @@
+![CMake workflow](https://github.com/Justin-Randall/rapidjsoncpp/actions/workflows/cmake.yml/badge.svg)
+
 # RapidJSON C++ Helpers
 
 This takes [TenCent's RapidJSON](https://github.com/Tencent/rapidjson) and adds a number of helpers to simplify its usage while adding capabilities for add-hoc serialization.

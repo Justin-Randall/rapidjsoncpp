@@ -17,7 +17,6 @@
 /// string.
 namespace rapidjson
 {
-	// TODO this could all be reduced further using rapidjson's typehelper
 	inline void read(const Value & source, unsigned char & target)
 	{
 		target = source.GetUint();
