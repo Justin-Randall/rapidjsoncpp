@@ -1,0 +1,1 @@
+add_library(rapidjsoncpp INTERFACE_LIBRARY)

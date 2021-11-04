@@ -10,5 +10,4 @@ include(CTest)
 enable_testing()
 
 add_subdirectory(tests)
-
 set(RAPIDJSON_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
