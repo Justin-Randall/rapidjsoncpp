@@ -5,9 +5,8 @@
 cmake_minimum_required(VERSION 3.19)
 include(FetchContent)
 
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if(NOT DEFINED JSONCPP_DISABLE_TESTING)
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-
   FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
@@ -33,7 +32,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
   add_test(NAME ${UNIT_TEST} COMMAND jsoncpp_tests)
   
   include_directories("${gtest_SOURCE_DIR}/include"
-      "${rapidjsoncpp_SOURCE_DIR}/include/rapidjsoncpp/*.hpp"
+      "${rapidjson_SOURCE_DIR}/include"
       "${rapidjsoncpp_SOURCE_DIR}/include"
   )
   add_custom_command(
@@ -52,7 +51,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
       COMMENT "Run coverage report"
       POST_BUILD 
       WORKING_DIRECTORY ${CMAKE_TEST_DIRECTORY}
-      COMMAND OpenCppCoverage.exe --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources googletest\\include\\gtest -- ctest -j10 -C Debug -T test --output-on-failure
+      COMMAND OpenCppCoverage.exe --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ctest -j10 -C Debug -T test --output-on-failure
     )
   endif()
 endif()
