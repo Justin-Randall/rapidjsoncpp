@@ -3,10 +3,11 @@
 # source package for details.
 
 cmake_minimum_required(VERSION 3.19)
-include(FetchContent)
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 if(NOT DEFINED JSONCPP_DISABLE_TESTING)
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+  include(FetchContent)
   FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
@@ -36,13 +37,15 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
 
   find_program(OpenCppCoverage_BINARY OpenCppCoverage.exe)
 
+  set(TEST_COMMAND_LINE_OPTIONS ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> -R "^${UNIT_TEST}$" --output-on-failures)
+
   if(OpenCppCoverage_BINARY)
     add_custom_command(
       TARGET ${UNIT_TEST}
       COMMENT "Run coverage report"
       POST_BUILD 
       WORKING_DIRECTORY ${CMAKE_TEST_DIRECTORY}
-      COMMAND ${OpenCppCoverage_BINARY} --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ctest -j10 -C $<CONFIGURATION> -T test --output-on-failure
+      COMMAND ${OpenCppCoverage_BINARY} --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ${TEST_COMMAND_LINE_OPTIONS}
     )
   else()
     add_custom_command(
@@ -50,7 +53,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
       COMMENT "Run tests"
       POST_BUILD 
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-      COMMAND ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> -R "^${UNIT_TEST}$" --output-on-failures
+      COMMAND ${TEST_COMMAND_LINE_OPTIONS}
     )
   endif()
 endif()
