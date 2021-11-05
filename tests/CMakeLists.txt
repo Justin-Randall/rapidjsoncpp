@@ -31,10 +31,8 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
   set(UNIT_TEST jsoncpp_tests)
   add_test(NAME ${UNIT_TEST} COMMAND jsoncpp_tests)
   
-  include_directories("${gtest_SOURCE_DIR}/include"
-      "${rapidjson_SOURCE_DIR}/include"
-      "${rapidjsoncpp_SOURCE_DIR}/include"
-  )
+  include_directories("${gtest_SOURCE_DIR}/include")
+  
   add_custom_command(
      TARGET ${UNIT_TEST}
      COMMENT "Run tests"
@@ -51,7 +49,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
       COMMENT "Run coverage report"
       POST_BUILD 
       WORKING_DIRECTORY ${CMAKE_TEST_DIRECTORY}
-      COMMAND OpenCppCoverage.exe --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ctest -j10 -C Debug -T test --output-on-failure
+      COMMAND ${OpenCppCoverage_BINARY} --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ctest -j10 -C Debug -T test --output-on-failure
     )
   endif()
 endif()

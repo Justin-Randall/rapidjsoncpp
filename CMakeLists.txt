@@ -19,6 +19,18 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(rapidjson)
 
+add_library(rapidjsoncpp INTERFACE)
+target_include_directories(
+    rapidjsoncpp 
+    INTERFACE 
+    "${rapidjson_SOURCE_DIR}/include"
+    "${rapidjsoncpp_SOURCE_DIR}/include"
+)
+
+include_directories("${rapidjson_SOURCE_DIR}/include"
+"${rapidjsoncpp_SOURCE_DIR}/include"
+)
+
 enable_testing()
 
 add_subdirectory(tests)
