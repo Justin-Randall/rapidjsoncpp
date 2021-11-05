@@ -9,12 +9,12 @@ include(CTest)
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 option(RAPIDJSON_BUILD_THIRDPARTY_GTEST OFF)
-set(RAPIDJSON_BUILD_TESTS false)
+option(RAPIDJSON_BUILD_TESTS OFF)
 
 include(FetchContent)
 FetchContent_Declare(
     rapidjson
-    GIT_REPOSITORY https://github.com/Tencent/rapidjson.git
+    GIT_REPOSITORY https://github.com/Justin-Randall/rapidjson.git
     GIT_TAG        origin/master
 )
 FetchContent_MakeAvailable(rapidjson)
