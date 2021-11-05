@@ -10,6 +10,7 @@ include(CTest)
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 option(RAPIDJSON_BUILD_THIRDPARTY_GTEST OFF)
 option(RAPIDJSON_BUILD_TESTS OFF)
+option(RAPIDJSON_BUILD_EXAMPLES OFF)
 
 include(FetchContent)
 FetchContent_Declare(
