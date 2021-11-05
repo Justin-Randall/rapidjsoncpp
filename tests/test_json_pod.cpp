@@ -24,7 +24,7 @@ void testPod(const std::string & podTypeName, const ValueType podValue)
 	rapidjson::from_json(result, podTypeName, check);
 	EXPECT_EQ(podValue, check);
 
-	ValueType nonexistent;
+	ValueType nonexistent = ValueType();
 	rapidjson::from_json(result, "shold not exist", nonexistent);
 	EXPECT_NE(podValue, nonexistent);
 }
