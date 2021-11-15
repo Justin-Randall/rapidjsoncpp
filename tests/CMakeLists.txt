@@ -2,7 +2,7 @@
 # Released under the MIT license. See LICENSE included with this
 # source package for details.
 
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.11)
 
 if(NOT DEFINED JSONCPP_DISABLE_TESTING)
   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
