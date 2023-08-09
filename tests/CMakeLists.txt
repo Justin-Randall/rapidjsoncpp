@@ -11,13 +11,13 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
   FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG        origin/master
+    GIT_TAG origin/main
   )
   FetchContent_MakeAvailable(googletest)
 
-  add_executable(jsoncpp_tests 
-    "test_json_pod.cpp" 
-    "test_json_vector.cpp" 
+  add_executable(jsoncpp_tests
+    "test_json_pod.cpp"
+    "test_json_vector.cpp"
     "test_json_map.cpp"
     "test_json_unordered_map.cpp"
     "test_json_set.cpp"
@@ -31,9 +31,8 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
 
   set(UNIT_TEST jsoncpp_tests)
   add_test(NAME ${UNIT_TEST} COMMAND jsoncpp_tests)
-  
+
   include_directories("${gtest_SOURCE_DIR}/include")
-  
 
   find_program(OpenCppCoverage_BINARY OpenCppCoverage.exe)
 
@@ -43,7 +42,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
     add_custom_command(
       TARGET ${UNIT_TEST}
       COMMENT "Run coverage report"
-      POST_BUILD 
+      POST_BUILD
       WORKING_DIRECTORY ${CMAKE_TEST_DIRECTORY}
       COMMAND ${OpenCppCoverage_BINARY} --quiet --export_type cobertura:${CMAKE_SOURCE_DIR}/build/coverage.xml --cover_children --sources rapidjsoncpp --excluded_modules system32 --excluded_sources build -- ${TEST_COMMAND_LINE_OPTIONS}
     )
@@ -51,7 +50,7 @@ if(NOT DEFINED JSONCPP_DISABLE_TESTING)
     add_custom_command(
       TARGET ${UNIT_TEST}
       COMMENT "Run tests"
-      POST_BUILD 
+      POST_BUILD
       WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
       COMMAND ${TEST_COMMAND_LINE_OPTIONS}
     )
